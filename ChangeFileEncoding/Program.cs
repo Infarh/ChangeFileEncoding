@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
 
 namespace ChangeFileEncoding
 {
@@ -45,8 +44,6 @@ namespace ChangeFileEncoding
 
             if (!processed)
                 ProcessDirectory(__WorkDirectory, __FileMasks, __UseSubDirectories);
-
-            Console.Read();
         }
 
         private static void CheckCommandLineArguments(IReadOnlyList<string> args)
@@ -174,7 +171,10 @@ namespace ChangeFileEncoding
                         break;
                     lines_count++;
                     readed += line.Length + 2;
-                    data.WriteLine(line);
+                    if(readed < data_length)
+                        data.WriteLine(line);
+                    else
+                        data.Write(line);
 
                     var completed = Math.Min(readed, data_length) / data_length;
 
