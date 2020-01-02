@@ -2,7 +2,8 @@
   "profiles": {
     "ChangeFileEncoding": {
       "commandName": "Project",
-      "workingDirectory": "C:\\Users\\shmac\\src\\lib\\Math.Core\\MathCore\\MathCore"
+      "commandLineArgs": "-t",
+      "workingDirectory": "C:\\Users\\shmac\\src\\lib\\Math.Core\\MathCore.DSP"
     }
   }
 }
