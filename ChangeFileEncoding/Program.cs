@@ -17,10 +17,6 @@ namespace ChangeFileEncoding
 
         public static void Main(string[] args)
         {
-            var file = new FileInfo(@"C:\Users\shmac\src\lib\Math.Core\MathCore\MathCore\Extensions"
-                                    + @"\BindingListExtensions.cs");
-            var length = file.GetDataLength();
-
             CheckCommandLineArguments(args);
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
