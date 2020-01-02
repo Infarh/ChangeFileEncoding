@@ -2,7 +2,7 @@
   "profiles": {
     "ChangeFileEncoding": {
       "commandName": "Project",
-      "workingDirectory": "C:\\Users\\shmac\\src\\lib\\Math.Core\\MathCore\\MathCore\\Extensions"
+      "workingDirectory": "C:\\Users\\shmac\\src\\lib\\Math.Core\\MathCore\\MathCore"
     }
   }
 }

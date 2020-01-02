@@ -85,7 +85,7 @@ namespace ChangeFileEncoding
 
         private static void ProcessDirectory(DirectoryInfo Dir, IEnumerable<string> FileMasks, bool UseSubDirectories)
         {
-            var title = $"Processing files in {Dir}";
+            var title = $"Processing files in {Dir.FullName.TrimInternal()}";
             Console.Title = title;
             Console.WriteLine(title);
 
@@ -119,7 +119,7 @@ namespace ChangeFileEncoding
                 }
             timer.Stop();
 
-            Console.WriteLine("Processing of {0} completed.", Dir);
+            Console.WriteLine("Processing of {0} completed.", Dir.FullName.TrimInternal());
             Console.WriteLine("\tTotal files {0}.", total_files);
             if (processed_count == 0 && error_io == 0 && error_access == 0)
             {
@@ -149,7 +149,7 @@ namespace ChangeFileEncoding
             var (unit, length, _) = File.GetDataLength();
             Console.Write("{0, 20}({4,5})[{2,4:0.###}{3,3}] {1}",
                 current_file_encoding?.EncodingName ?? "???",
-                relative_file_path,
+                relative_file_path.TrimInternal(),
                 length,
                 unit,
                 current_file_encoding?.CodePage);
