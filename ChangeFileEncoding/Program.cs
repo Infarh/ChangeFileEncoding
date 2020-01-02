@@ -13,6 +13,7 @@ namespace ChangeFileEncoding
         private static Encoding __Encoding = Encoding.UTF8;
         private static string[] __FileMasks = { "*.txt", "*.cs", "*.xml", "*.xaml", "*.htm", "*.html", "*.c", "*.cpp", "*.h", "*.js", "*.asm", };
         private static bool __UseSubDirectories = true;
+        private static bool __StopAtEnd = true;
 
         public static void Main(string[] args)
         {
@@ -44,6 +45,12 @@ namespace ChangeFileEncoding
 
             if (!processed)
                 ProcessDirectory(__WorkDirectory, __FileMasks, __UseSubDirectories);
+
+            if (__StopAtEnd)
+            {
+                Console.WriteLine("Processing completed. Press Enter to exit.");
+                Console.ReadLine();
+            }
         }
 
         private static void CheckCommandLineArguments(IReadOnlyList<string> args)
@@ -79,6 +86,10 @@ namespace ChangeFileEncoding
                             __UseSubDirectories = true;
                         else if (args[i + 1].Equals("false", StringComparison.OrdinalIgnoreCase))
                             __UseSubDirectories = false;
+                        break;
+                    case "--tool":
+                    case "-f":
+                        __StopAtEnd = false;
                         break;
                 }
         }
